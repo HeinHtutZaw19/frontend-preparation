@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Countries Explorer (Interview Project)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a small Vite + React + TypeScript application that allows users to explore countries by selecting a capital city. It fetches data from the REST Countries API and displays details like country name, flag, region, population, languages, and currencies. The UI uses a Holy Grail layout for structured presentation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Problem Statement
 
-## React Compiler
+Build a simple frontend application that allows users to:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Select a capital city from a predefined list
+2. Fetch and display the country/countries associated with that capital
+3. Show relevant country details (flag, name, region, population, languages, currency)
+4. Organize information clearly using a structured layout
 
-## Expanding the ESLint configuration
+No backend or database is required.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+##  API Endpoints Used
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This application uses the **REST Countries API**.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Primary Endpoint (fetch by capital):**
+* GET https://restcountries.com/v3.1/capital/:capital
+Returns country objects that contain:
+- `name.common`
+- `capital[]`
+- `region`
+- `population`
+- `flags`
+- `languages`
+- `currencies`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* GET https://restcountries.com/v3.1/all
+Fetch full list of countries with names, flags, capitals, etc.
