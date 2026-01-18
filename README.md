@@ -32,5 +32,12 @@ Returns country objects that contain:
 - `languages`
 - `currencies`
 
-* GET https://restcountries.com/v3.1/all
+* GET https://restcountries.com/v3.1/capital/all
 Fetch full list of countries with names, flags, capitals, etc.
+
+--
+## DEMO
+
+https://github.com/user-attachments/assets/8025e6fb-4ad7-4167-80e2-d97f99a6854b
+
+
