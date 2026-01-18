@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
   placeholder?: string;
@@ -6,7 +6,7 @@ type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
 
 const Select = ({ children, placeholder, ...props }: SelectProps) => {
   return (
-    <select {...props}>
+    <select style={{ color: "black" }} {...props}>
       {placeholder && <option value="">{placeholder}</option>}
       {children}
     </select>
