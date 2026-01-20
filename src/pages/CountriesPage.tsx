@@ -83,7 +83,7 @@ const CountriesPage = () => {
         </Select>
       </div>
 
-      <div className="right">
+      <div className={`${data != null ? "right" : ""}`}>
         {data != null && (
           <div className="info-container">
             <img src={data.flag} alt="flag" />
