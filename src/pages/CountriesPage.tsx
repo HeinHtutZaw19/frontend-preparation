@@ -34,35 +34,33 @@ const CountriesPage = () => {
   const [data, setData] = useState<Country | null>(null);
   const [selected, setSelected] = useState("");
 
-  const handleClick = async () => {
-    const response = await fetch(`${BASE_URL}/capital/${selected}`);
-    const result = (await response.json())[0];
-    const capital = result.capital;
-    const common = result.name.common;
-    const flag = result.flags.png;
-    const region = result.region;
-    const population = result.population;
-    const language = Object.values(result.languages)[0];
-    const currency = Object.values(result.currencies)[0].name;
-
-    setData({
-      name: { common: common },
-      capital,
-      region,
-      flag,
-      population,
-      language,
-      currency,
-    });
-  };
-
   const handleChange = (e: any) => {
     setSelected(() => e.target.value);
   };
 
   useEffect(() => {
+    const handleClick = async () => {
+      const response = await fetch(`${BASE_URL}/capital/${selected}`);
+      const result = (await response.json())[0];
+      const capital = result.capital;
+      const common = result.name.common;
+      const flag = result.flags.png;
+      const region = result.region;
+      const population = result.population;
+      const language = Object.values(result.languages)[0];
+      const currency = Object.values(result.currencies)[0].name;
+
+      setData({
+        name: { common: common },
+        capital,
+        region,
+        flag,
+        population,
+        language,
+        currency,
+      });
+    };
     handleClick();
-    console.log(selected);
   }, [selected]);
 
   return (
